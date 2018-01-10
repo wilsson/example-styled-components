@@ -1,10 +1,14 @@
 const webpack = require("webpack");
 const path = require("path");
-
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     entry: {
         app: "./src/entry.tsx",
-        vendor: ['react', 'react-dom'],
+        vendor: [
+            'react',
+            'react-dom',
+            'styled-components'
+        ],
     },
     output: {
         filename: "[name].js",
@@ -26,13 +30,12 @@ module.exports = {
     module: {
         rules: [
             { 
-                test: /\.tsx?$/, 
-                loader: "awesome-typescript-loader"
-            },
-            {
-                test: /\.tsx?/,
-                loader: 'stylelint-custom-processor-loader'
-            },
+                test: /\.tsx?$/,
+                use: [
+                    'awesome-typescript-loader',
+                    'stylelint-custom-processor-loader'
+                ]
+            }
         ]
     },
     plugins: [
