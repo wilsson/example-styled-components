@@ -1,44 +1,38 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import styled, { css } from 'styled-components';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { Button } from './components/button';
+import { Title } from './components/title';
+import styled from 'styled-components';
 
-interface Button {
-    primary? : any;
+interface ComponentAppProps { 
+    className?: any;
 }
 
-const Button = styled.button`
-    border-radius: 3px;
-    padding: 0.25em 1em;
-    margin: 0 1em;
-    background: transparent;
-    border: 2px solid palevioletred;
-    ${(props: Button) => props.primary && css`
-        background: green;
-        color: white;
-        border-color: black;
-    `}
-`;
-
-const Title = styled.section`
-    color: black;
-    font-weight: bold;
-    font-size: 30px;
-`;
-
-class Example extends React.Component<undefined, undefined> {
+class ComponentApp extends React.Component<ComponentAppProps, {}> {
     constructor() {
         super();
     }
+
     render() {
         return(
-            <div>
-                <Title>Mi titulo</Title>
-                <Button>Normal Button</Button>
+            <div className={this.props.className}>
+                <Title>BUTTON</Title>
+                <Button primary>Normal Button</Button>
             </div>
         )
     }
 }
+
+const App = styled(ComponentApp)`
+    width: 200px;
+    border: 1px solid black;
+    padding: 10px 30px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0 auto;
+`
+
 ReactDOM.render(
-    <Example/>,
+    <App/>,
     document.getElementById("example")
 );

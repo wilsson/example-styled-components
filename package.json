@@ -2,7 +2,7 @@
   "name": "example-styled-components",
   "version": "0.1.0",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --open",
     "build": "webpack"
   },
   "devDependencies": {
